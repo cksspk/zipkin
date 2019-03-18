@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  sleuth:
+    sampler:
+      percentage: 1
+  cloud:
+      stream:
+        kafka:
+          binder:
+            brokers: localhost:9092   # kafka的节点信息 
+            zkNodes: localhost:2181   # zookeeper节点信息
