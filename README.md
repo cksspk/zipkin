@@ -1,0 +1,4 @@
+# zipkin
+zipkin通过kafka传输追踪数据
+springcloud版本为Edgware
+可选择mysql、es数据库等作为存储
