@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 spring:
 #  zipkin:
 #      base-url: http://127.0.0.1:9411  #默认http通信的配置方式
@@ -7,7 +7,7 @@ spring:
     sender:
       type: kafka  # 支持三种 方式  RABBIT, KAFKA, WEB
     service:
-      name: ZipkinClient_8081_App #可以和 application.name 同名 但是必须设置
+      name: ZipkinClient_8082_App #可以和 application.name 同名 但是必须设置
   sleuth:
     sampler:
       percentage: 1.0

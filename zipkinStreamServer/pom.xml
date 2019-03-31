@@ -4,51 +4,63 @@
   <artifactId>zipkinStreamServer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-  
-  
-
     <!--引入Springboot-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>1.5.13.RELEASE</version>
     </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+	<spring-cloud.version>Edgware.SR3</spring-cloud.version>
+	<!-- <spring-cloud.version>Dalston.SR5</spring-cloud.version> -->
   </properties>
 
   <dependencies>
-   
-    <!--springboot依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--加入zipkin依赖-->
-        <dependency>
+        <!-- E版本之后 -->
+        <!-- zipkin server -->
+		<dependency>
+		    <groupId>io.zipkin.java</groupId>
+		    <artifactId>zipkin-server</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.zipkin.java</groupId>
+		    <artifactId>zipkin-autoconfigure-ui</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.zipkin.java</groupId>
+		    <artifactId>zipkin-autoconfigure-collector-kafka</artifactId>
+		    <version>2.6.1</version>
+		</dependency>
+	
+	   
+	   <!-- 使用es数据库 -->
+	  <!--   
+	  <dependency>
             <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin</artifactId>
+            <artifactId>zipkin-autoconfigure-storage-elasticsearch-http</artifactId>
             <version>2.4.2</version>
-        </dependency>
-   
-    <!--引入zipkin的流绑定-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
-        </dependency>
-   
-   		 <dependency>
+        </dependency> -->
+	   
+	   
+	   
+	  <!--  使用mysql数据库 -->
+	   <!-- <dependency>
             <groupId>io.zipkin.java</groupId>
-            <artifactId>zipkin-autoconfigure-ui</artifactId>
+            <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
         </dependency>
-    	
-   
+        
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>  -->
   </dependencies>
 
   <!-- 引入spring cloud的依赖 -->
@@ -57,7 +69,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.SR5</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -73,6 +85,7 @@
       </plugin>
     </plugins>
   </build>
+  
   
   
 </project>

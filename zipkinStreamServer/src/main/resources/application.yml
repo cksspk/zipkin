@@ -1,12 +1,36 @@
-#配置kafka
+server:
+  port: 9411
 spring:
   sleuth:
     enabled: false
     sampler:
       percentage: 1.0
-  cloud:
-    stream:
-      kafka:
-        binder:
-          brokers: localhost:9092
-          zkNodes: localhost:2181
+zipkin:
+  storage:
+    type: mem   #可以使用mysql es 等数据库
+  collector:
+    kafka:
+      zookeeper: localhost:2181
+      bootstrap-servers: localhost:9092
+#      es数据库配置
+#    elasticsearch:
+#      hosts: http://192.168.1.222:9200
+#      username: elastic
+#      password: changeme
+#      cluster: elasticsearch
+#      index: zipkin
+#      index-shards: 1
+#      index-replicas: 1
+
+
+#      mysql数据库配置
+#  datasource:
+#    schema[0]: classpath:/zipkin.sql
+#    name: zipkin
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name:  com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/zipkin?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+#    username: root
+#    password: 123456
+#    initialize: true
+#    continue-on-error: true
